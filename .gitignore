@@ -1,0 +1,6 @@
+target/
+.idea/
+.cache/
+.m2/
+*.log
+

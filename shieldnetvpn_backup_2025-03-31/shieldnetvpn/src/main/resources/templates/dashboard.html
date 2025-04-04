@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Welcome, <span th:text="${username}"></span></h2>
+    <a th:href="@{/download(username=${username})}"><button>Download Config</button></a>
+    <a href="/download-app"><button>Download WireGuard App</button></a>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Signup</title>
+   	 <style>
+       		 .notification { color: red; margin-left: 10px; }
+       		 .available { color: green; }
+   	 </style>
+</head>
+<body>
+    <h2>Signup</h2>
+    <form method="post" action="/signup" id="signupForm">
+        <input type="text" name="username" id="username" placeholder="Username" required onkeyup="checkUsername()">
+        <span id="usernameStatus" class="notification"></span><br>
+        <input type="email" name="email" placeholder="Email" required><br>
+        <input type="password" name="password" placeholder="Password" required><br>
+        <button type="submit" id="submitBtn" disabled>Signup</button>
+    </form>
+    <p th:if="${error}" th:text="${error}" style="color: red;"></p>
+
+    <script>
+        function checkUsername() {
+            const username = document.getElementById("username").value;
+            const status = document.getElementById("usernameStatus");
+            const submitBtn = document.getElementById("submitBtn");
+
+            if (username.length < 3) {
+                status.textContent = "Username too short";
+                status.classList.remove("available");
+                submitBtn.disabled = true;
+                return;
+            }
+
+            fetch("/check-username?username=" + encodeURIComponent(username))
+                .then(response => response.text())
+                .then(data => {
+                    if (data === "available") {
+                        status.textContent = "Username available";
+                        status.classList.add("available");
+                        submitBtn.disabled = false;
+                    } else {
+                        status.textContent = "Username not available";
+                        status.classList.remove("available");
+                        submitBtn.disabled = true;
+                    }
+                })
+                .catch(error => {
+                    status.textContent = "Error checking username";
+                    submitBtn.disabled = true;
+                });
+        }
+    </script>
+</body>
+</html>
