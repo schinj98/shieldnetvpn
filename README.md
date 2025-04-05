@@ -58,8 +58,8 @@
 
 ## 👨‍💻 Developed By
 
-**Chinmay Singh**  
-📧 [schinj98@gmail.com](mailto:schinj98@gmail.com)  
+**Sachin Jangid**  
+📧 [sachinreal2003@gmail.com](mailto:sachinreal2003@gmail.com)  
 🔗 [GitHub - schinj98](https://github.com/schinj98)
 
 ---
